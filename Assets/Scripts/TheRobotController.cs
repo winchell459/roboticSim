@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TheRobotController : MonoBehaviour
 {
+    public float Speed = 3f;
     public float Torque = 5.0f; //float - > real numbers
     private Rigidbody rb;
 
@@ -17,10 +18,20 @@ public class TheRobotController : MonoBehaviour
     void Update()
     {
         Debug.Log(Input.GetAxis("Left") + "  " + Input.GetAxis("Right"));
-        float left = Input.GetAxis("Left");
-        float right = Input.GetAxis("Right");
+        float moving = Input.GetAxis("Left");
+        float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
+
+        turning += 1;
+        turning /= 2;
+
+        float left = turning;
+        float right = (1 - turning);
 
         float rotation = left - right;
+        float velocity = moving * Speed;
+
+        rb.velocity = velocity * transform.forward;
+        transform.Rotate(rotation * transform.up * Torque);
 
         //if(left > right) 
 
