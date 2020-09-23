@@ -8,15 +8,25 @@ public class TheRobotController : MonoBehaviour
     public float Torque = 5.0f; //float - > real numbers
     private Rigidbody rb;
 
-    public LayerMask Mask;
-    public float RayDistance = 1f;
+    private List<Riser> risers = new List<Riser>();
+
+    public Riser UpperRiser, LowerRiser, BottomRiser;
+    public float LiftSpeed = 1;
+    public float LiftDistance = 1;
+    private float liftDefaultHeight;
+    //public LayerMask Mask;
+    //public float RayDistance = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        liftDefaultHeight = LowerRiser.transform.position.y;
+        BottomRiser.gameObject.SetActive(false);
+        //pos = transform.position;
     }
 
+    //Vector3 pos;
     // Update is called once per frame
     void Update()
     {
@@ -36,30 +46,29 @@ public class TheRobotController : MonoBehaviour
         rb.velocity = velocity * transform.forward;
         transform.Rotate(rotation * transform.up * Torque);
 
-        checkFork();
+        
+        Debug.Log(rb.velocity);
 
+        //pos = transform.position;
     }
 
-    private void checkFork()
+    public bool AddRiser(Riser riser)
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(transform.position, transform.forward * RayDistance, Color.red);
-
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, RayDistance))
-        {
-            Vector3 displacement = hit.collider.transform.position - transform.position;
-            if(Vector3.Dot(displacement, rb.velocity) < 0) //less than zero means release the riser
-            {
-                hit.collider.transform.parent = null;
-                hit.collider.GetComponent<Rigidbody>().isKinematic = false;
-            }
-            else if(hit.collider.transform.parent != transform)
-            {
-                hit.collider.transform.parent = transform;
-                hit.collider.GetComponent<Rigidbody>().isKinematic = true;
-            }
-        }
+        if (risers.Contains(riser)) return false;
+        else risers.Add(riser);
+        return true;
     }
     
+    public bool RemoveRiser(Riser riser)
+    {
+        if (!risers.Contains(riser)) return false;
+        else risers.Remove(riser);
+        return true;
+    }
+   
+    public bool HasRiser(Riser riser)
+    {
+        return risers.Contains(riser);
+    }
+
 }

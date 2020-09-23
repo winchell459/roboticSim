@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoardController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class BoardController : MonoBehaviour
             GameObject line = Instantiate(HorizontalLinePrefab);
             line.transform.position = new Vector3(transform.position.x, 0, currentZ);
             currentZ += LineSpacing * BoardScaleFactor;
+            line.transform.parent = transform;
         }
 
         //place Vertical lines
@@ -45,6 +47,12 @@ public class BoardController : MonoBehaviour
             GameObject line = Instantiate(VerticalLinePrefab);
             line.transform.position = new Vector3(currentX, 0, transform.position.z);
             currentX += LineSpacing * BoardScaleFactor;
+            line.transform.parent = transform;
         }
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
