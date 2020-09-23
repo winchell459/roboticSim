@@ -10,10 +10,11 @@ public class TheRobotController : MonoBehaviour
 
     private List<Riser> risers = new List<Riser>();
 
-    public Riser UpperRiser, LowerRiser, BottomRiser;
+    public Forklift UpperRiser, LowerRiser, BottomRiser;
     public float LiftSpeed = 1;
     public float LiftDistance = 1;
-    private float liftDefaultHeight;
+    private float liftDefaultHeight, liftSpacing;
+  
     //public LayerMask Mask;
     //public float RayDistance = 1f;
 
@@ -21,8 +22,10 @@ public class TheRobotController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        liftDefaultHeight = LowerRiser.transform.position.y;
+        liftDefaultHeight = LowerRiser.transform.localPosition.y;
+        liftSpacing = UpperRiser.transform.position.y - LowerRiser.transform.position.y;
         BottomRiser.gameObject.SetActive(false);
+
         //pos = transform.position;
     }
 
@@ -31,8 +34,17 @@ public class TheRobotController : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.GetAxis("Left") + "  " + Input.GetAxis("Right"));
-        float moving = Input.GetAxis("Left");
-        float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
+        //float moving = Input.GetAxis("Left");
+        //float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
+
+        handleLift();
+
+
+        float moving = Input.GetAxis("Vertical");
+        float turning = Input.GetAxis("Horizontal");
+
+        
+
 
         turning += 1;
         turning /= 2;
@@ -47,9 +59,29 @@ public class TheRobotController : MonoBehaviour
         transform.Rotate(rotation * transform.up * Torque);
 
         
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
 
         //pos = transform.position;
+    }
+    private void handleLift()
+    {
+        float lift = Input.GetAxis("Left");
+        if (BottomRiser.transform.GetComponentInChildren<Riser>()) lift = Mathf.Clamp(lift, 0, 1);
+        float liftPos = lift * Time.deltaTime * LiftSpeed + LowerRiser.transform.localPosition.y;
+        liftPos = Mathf.Clamp(liftPos, liftDefaultHeight, liftDefaultHeight + LiftDistance);
+        
+        //Debug.Log(liftPos);
+        LowerRiser.transform.localPosition = new Vector3(LowerRiser.transform.localPosition.x, liftPos, LowerRiser.transform.localPosition.z);
+        UpperRiser.transform.localPosition = LowerRiser.transform.localPosition + new Vector3(0, liftSpacing,0);
+
+        if(liftPos >= liftDefaultHeight + LiftDistance)
+        {
+            BottomRiser.gameObject.SetActive(true);
+        }
+        else
+        {
+            BottomRiser.gameObject.SetActive(false);
+        }
     }
 
     public bool AddRiser(Riser riser)

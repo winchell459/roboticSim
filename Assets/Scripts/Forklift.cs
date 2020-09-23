@@ -28,9 +28,11 @@ public class Forklift : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * RayDistance, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, RayDistance))
+        if (Physics.Raycast(ray, out hit, RayDistance, Mask))
         {
             Transform riser = getParent(hit.collider.transform);
+            Debug.Log(transform.name + " hit " + riser.name);
+
             Vector3 displacement = riser.position - transform.position;
             if (Vector3.Dot(displacement, rb.velocity) < 0) //less than zero means release the riser
             {
@@ -56,6 +58,7 @@ public class Forklift : MonoBehaviour
 
     private Transform getParent(Transform riser)
     {
+
         if (riser.parent != null && riser.parent != transform) return getParent(riser.parent);
         else return riser;
     }
