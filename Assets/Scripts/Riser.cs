@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Riser : MonoBehaviour
 {
+    private float mass = 1;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GetComponent<Rigidbody>() != null) mass = GetComponent<Rigidbody>().mass;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Pickup(Transform forklift)
     {
-        
+        transform.parent = forklift;
+        if (GetComponent<Rigidbody>()) Destroy(GetComponent<Rigidbody>());
+    }
+
+    public void Drop()
+    {
+        transform.parent = null;
+        if (!GetComponent<Rigidbody>()) gameObject.AddComponent<Rigidbody>().mass = mass;
     }
 }

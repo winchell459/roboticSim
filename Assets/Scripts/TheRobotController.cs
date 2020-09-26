@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,21 +11,18 @@ public class TheRobotController : MonoBehaviour
 
     private List<Riser> risers = new List<Riser>();
 
-    public Forklift UpperRiser, LowerRiser, BottomRiser;
+    public Forklift UpperForklift, LowerForklift, BottomForklift;
     public float LiftSpeed = 1;
     public float LiftDistance = 1;
     private float liftDefaultHeight, liftSpacing;
-  
-    //public LayerMask Mask;
-    //public float RayDistance = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        liftDefaultHeight = LowerRiser.transform.localPosition.y;
-        liftSpacing = UpperRiser.transform.position.y - LowerRiser.transform.position.y;
-        BottomRiser.gameObject.SetActive(false);
+        liftDefaultHeight = LowerForklift.transform.localPosition.y;
+        liftSpacing = UpperForklift.transform.position.y - LowerForklift.transform.position.y;
+        BottomForklift.gameObject.SetActive(false);
 
         //pos = transform.position;
     }
@@ -63,24 +61,26 @@ public class TheRobotController : MonoBehaviour
 
         //pos = transform.position;
     }
+
     private void handleLift()
     {
-        float lift = Input.GetAxis("Left");
-        if (BottomRiser.transform.GetComponentInChildren<Riser>()) lift = Mathf.Clamp(lift, 0, 1);
-        float liftPos = lift * Time.deltaTime * LiftSpeed + LowerRiser.transform.localPosition.y;
-        liftPos = Mathf.Clamp(liftPos, liftDefaultHeight, liftDefaultHeight + LiftDistance);
-        
-        //Debug.Log(liftPos);
-        LowerRiser.transform.localPosition = new Vector3(LowerRiser.transform.localPosition.x, liftPos, LowerRiser.transform.localPosition.z);
-        UpperRiser.transform.localPosition = LowerRiser.transform.localPosition + new Vector3(0, liftSpacing,0);
+        float lift = Input.GetAxis("Right");
+        if (BottomForklift.transform.GetComponentInChildren<Riser>()) lift = Mathf.Clamp(lift, 0, 1); //if bottom forklift has a rise, do not move down
+        float liftPos = lift * Time.deltaTime * LiftSpeed + LowerForklift.transform.localPosition.y; //lift displacement plus Lowerlift local y position
+        liftPos = Mathf.Clamp(liftPos, liftDefaultHeight, liftDefaultHeight + LiftDistance); //clamp lower lift between default height and max height
+
+        //set lower and upper forklifts
+        Vector3 lowerLiftPos = LowerForklift.transform.localPosition;
+        LowerForklift.transform.localPosition = new Vector3(lowerLiftPos.x, liftPos, lowerLiftPos.z);
+        UpperForklift.transform.localPosition = LowerForklift.transform.localPosition + new Vector3(0, liftSpacing, 0);
 
         if(liftPos >= liftDefaultHeight + LiftDistance)
         {
-            BottomRiser.gameObject.SetActive(true);
+            BottomForklift.gameObject.SetActive(true);
         }
         else
         {
-            BottomRiser.gameObject.SetActive(false);
+            BottomForklift.gameObject.SetActive(false);
         }
     }
 

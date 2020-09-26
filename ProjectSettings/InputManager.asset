@@ -57,10 +57,10 @@ InputManager:
     m_Name: Right
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
-    altNegativeButton: a
-    altPositiveButton: d
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3

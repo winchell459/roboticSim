@@ -31,28 +31,20 @@ public class Forklift : MonoBehaviour
         if (Physics.Raycast(ray, out hit, RayDistance, Mask))
         {
             Transform riser = getParent(hit.collider.transform);
-            Debug.Log(transform.name + " hit " + riser.name);
+            //Debug.Log(transform.name + " hit " + riser.name);
 
             Vector3 displacement = riser.position - transform.position;
             if (Vector3.Dot(displacement, rb.velocity) < 0) //less than zero means release the riser
             {
-                riser.parent = null;
-                riser.GetComponent<Rigidbody>().isKinematic = false;
+                riser.GetComponent<Riser>().Drop();
             }
-            else if (riser.parent != transform)
+            else if (riser.parent != transform) //pick up Riser
             {
 
-                Rigidbody rrb = riser.GetComponent<Rigidbody>();
-                //rrb.velocity = Vector3.zero;
-                //rrb.angularVelocity = Vector3.zero;
-                riser.parent = transform;
-                rrb.isKinematic = true;
+                riser.GetComponent<Riser>().Pickup(transform);
             }
 
-            //if (Vector3.Distance(pos, transform.position) > 0 && rb.velocity == Vector3.zero)
-            //{
-            //    riser.GetComponent<Rigidbody>().isKinematic = false;
-            //}
+            
         }
     }
 
