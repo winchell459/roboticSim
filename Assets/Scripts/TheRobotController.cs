@@ -24,7 +24,7 @@ public class TheRobotController : MonoBehaviour
         liftSpacing = UpperForklift.transform.position.y - LowerForklift.transform.position.y;
         BottomForklift.gameObject.SetActive(false);
 
-        //pos = transform.position;
+        //pos = transfsorm.position;
     }
 
     //Vector3 pos;

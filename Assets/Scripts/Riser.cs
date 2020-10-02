@@ -5,6 +5,13 @@ using UnityEngine;
 public class Riser : MonoBehaviour
 {
     private float mass = 1;
+    public RiserColors RiserColor;
+    public enum RiserColors
+    {
+        Orange,
+        Teal,
+        Purple
+    }
     // Start is called before the first frame update
     void Start()
     {

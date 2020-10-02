@@ -1670,6 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RiserColor: 0
 --- !u!54 &736109189
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2623,6 +2624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RiserColor: 0
 --- !u!1 &1336289059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,8 +3350,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513249057}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.66, y: 0.49, z: 2.914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.66, y: 1.88, z: 2.914}
   m_LocalScale: {x: 0.9, y: 1, z: 0.9}
   m_Children:
   - {fileID: 1736447837}
@@ -3371,6 +3373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RiserColor: 0
 --- !u!1 &1591080097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,7 +3901,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904563847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.11, y: 0.49, z: 0.329}
+  m_LocalPosition: {x: 4.49, y: 0.49, z: 0.329}
   m_LocalScale: {x: 0.9, y: 1, z: 0.9}
   m_Children:
   - {fileID: 742629666}
@@ -3920,6 +3923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RiserColor: 0
 --- !u!1 &1918253239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4079,6 +4083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RiserColor: 0
 --- !u!1 &2093776363
 GameObject:
   m_ObjectHideFlags: 0
@@ -4269,5 +4274,9 @@ PrefabInstance:
       propertyPath: UpperForklift
       value: 
       objectReference: {fileID: 285607478}
+    - target: {fileID: 2576707480579479135, guid: 16bf02cd5c1db4bf3bdb9c123aaf85cf, type: 3}
+      propertyPath: LiftDistance
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16bf02cd5c1db4bf3bdb9c123aaf85cf, type: 3}
