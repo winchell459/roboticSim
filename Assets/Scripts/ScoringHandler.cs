@@ -24,6 +24,15 @@ public class ScoringHandler : MonoBehaviour
         if (validSequence(G0_0.RiserStack[0], G1_1.RiserStack[0], G2_2.RiserStack[0])) score += 3;
         if (validSequence(G2_0.RiserStack[0], G1_1.RiserStack[0], G0_2.RiserStack[0])) score += 3;
 
+        checkStack(G0_0.RiserStack);
+        checkStack(G1_0.RiserStack);
+        checkStack(G2_0.RiserStack);
+        checkStack(G0_1.RiserStack);
+        checkStack(G1_1.RiserStack);
+        checkStack(G2_1.RiserStack);
+        checkStack(G0_2.RiserStack);
+        checkStack(G1_2.RiserStack);
+        checkStack(G2_2.RiserStack);
 
         return score;
     }
@@ -48,6 +57,29 @@ public class ScoringHandler : MonoBehaviour
         float test = Vector3.Dot(riser.transform.up, Vector3.up);
         if (test > 0.2f || test < -0.2f) return true;
         else return false;
+    }
+
+    private int checkStack(Riser[] stack)
+    {
+        int score = 0;
+        if (validPlacement(stack[0]))
+        {
+            score += 1;  //one point for having a riser
+            if(validPlacement(stack[1]))
+            {
+                score += 1; // one point for having a stacked riser
+                if(validPlacement(stack[2]))
+                {
+                    score += 1; // another point for the top riser
+                    if(stack[0].RiserColor == stack[1].RiserColor && stack[2].RiserColor == stack[1].RiserColor)
+                    {
+                        score += 30; //30 points for having a stack of 3 of the same color
+                    }
+                }
+            }
+        }
+        
+        return score;
     }
 
 }
