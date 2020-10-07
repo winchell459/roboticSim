@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BoardController : MonoBehaviour
 {
@@ -10,16 +11,44 @@ public class BoardController : MonoBehaviour
     public float LineSpacing = 0.2f;
     public float BoardScaleFactor = 10;
 
+    public Text ScoreText, TimeText;
+    public ScoringHandler SH;
+
+    public float MatchTime = 60;
+    private float matchStartTime;
+    private bool matchStarted = false;
+    private bool matchEnded = false;
+
     // Start is called before the first frame update
     void Start()
     {
         setupBoard();
+        startMatch();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (matchStarted && !matchEnded) handleMatch();
+    }
+
+    private void startMatch()
+    {
+        matchStartTime = Time.fixedTime;
+        matchStarted = true;
+    }
+
+    private void handleMatch()
+    {
+        if(Time.fixedTime > matchStartTime + MatchTime)
+        {
+            matchEnded = true;
+            ScoreText.text = SH.ScoreBoard().ToString();
+        }
+        else
+        {
+            TimeText.text = ((int)(MatchTime - (Time.fixedTime - matchStartTime))).ToString();
+        }
     }
 
     private void setupBoard()

@@ -59,7 +59,7 @@ public class ScoringHandler : MonoBehaviour
         else return false;
     }
 
-    private int checkStack(Riser[] stack)
+    private int checkStack(List<Riser> stack)
     {
         int score = 0;
         if (validPlacement(stack[0]))

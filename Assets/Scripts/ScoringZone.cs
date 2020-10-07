@@ -5,13 +5,16 @@ using UnityEngine;
 public class ScoringZone : MonoBehaviour
 {
     //index 0 - bottom 
-    public Riser[] RiserStack = new Riser[3];
+    //public Riser[] RiserStack = new Riser[3];
+    public List<Riser> RiserStack = new List<Riser>(3);
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.parent && other.transform.parent.GetComponent<Riser>())
         {
-            addRiser(other.transform.parent.GetComponent<Riser>());
+            
+            Riser riser = other.transform.parent.GetComponent<Riser>();
+            if (!RiserStack.Contains(riser)) addRiser(riser);
         }
     }
 
@@ -42,7 +45,8 @@ public class ScoringZone : MonoBehaviour
     {
         if (other.transform.parent && other.transform.parent.GetComponent<Riser>())
         {
-            removeRiser(other.transform.parent.GetComponent<Riser>());
+            Riser riser = other.transform.parent.GetComponent<Riser>();
+            if(RiserStack.Contains(riser)) removeRiser(riser);
         }
     }
 
