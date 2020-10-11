@@ -24,15 +24,15 @@ public class ScoringHandler : MonoBehaviour
         if (validSequence(G0_0.RiserStack[0], G1_1.RiserStack[0], G2_2.RiserStack[0])) score += 3;
         if (validSequence(G2_0.RiserStack[0], G1_1.RiserStack[0], G0_2.RiserStack[0])) score += 3;
 
-        checkStack(G0_0.RiserStack);
-        checkStack(G1_0.RiserStack);
-        checkStack(G2_0.RiserStack);
-        checkStack(G0_1.RiserStack);
-        checkStack(G1_1.RiserStack);
-        checkStack(G2_1.RiserStack);
-        checkStack(G0_2.RiserStack);
-        checkStack(G1_2.RiserStack);
-        checkStack(G2_2.RiserStack);
+        score += checkStack(G0_0.RiserStack);
+        score += checkStack(G1_0.RiserStack);
+        score += checkStack(G2_0.RiserStack);
+        score += checkStack(G0_1.RiserStack);
+        score += checkStack(G1_1.RiserStack);
+        score += checkStack(G2_1.RiserStack);
+        score += checkStack(G0_2.RiserStack);
+        score += checkStack(G1_2.RiserStack);
+        score += checkStack(G2_2.RiserStack);
 
         return score;
     }
@@ -43,6 +43,7 @@ public class ScoringHandler : MonoBehaviour
         {
             if(riser1.RiserColor == riser2.RiserColor && riser2.RiserColor == riser3.RiserColor)
             {
+                Debug.Log("+3 sequence: " + riser1.name + ":" + riser2.name + ":" + riser3.name);
                 return true;
             }
             
@@ -65,15 +66,20 @@ public class ScoringHandler : MonoBehaviour
         if (validPlacement(stack[0]))
         {
             score += 1;  //one point for having a riser
-            if(validPlacement(stack[1]))
+            Debug.Log("+1 single stack " + stack[0].RiserColor);
+            if (validPlacement(stack[1]))
             {
+                
                 score += 1; // one point for having a stacked riser
-                if(validPlacement(stack[2]))
+                Debug.Log("+1 double stack " + stack[0].RiserColor);
+                if (validPlacement(stack[2]))
                 {
                     score += 1; // another point for the top riser
-                    if(stack[0].RiserColor == stack[1].RiserColor && stack[2].RiserColor == stack[1].RiserColor)
+                    Debug.Log("+1 triple stack " + stack[0].RiserColor);
+                    if (stack[0].RiserColor == stack[1].RiserColor && stack[2].RiserColor == stack[1].RiserColor)
                     {
                         score += 30; //30 points for having a stack of 3 of the same color
+                        Debug.Log("+30 " + stack[0].RiserColor + " stack.");
                     }
                 }
             }
