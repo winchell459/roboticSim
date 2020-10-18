@@ -34,6 +34,7 @@ public class ScoringHandler : MonoBehaviour
         score += checkStack(G1_2.RiserStack);
         score += checkStack(G2_2.RiserStack);
 
+        
         return score;
     }
 

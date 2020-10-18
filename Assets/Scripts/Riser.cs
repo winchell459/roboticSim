@@ -5,6 +5,7 @@ using UnityEngine;
 public class Riser : MonoBehaviour
 {
     private float mass = 1;
+    public Vector2 Size { get { return getSize(); } }
     public RiserColors RiserColor;
     public enum RiserColors
     {
@@ -28,5 +29,13 @@ public class Riser : MonoBehaviour
     {
         transform.parent = null;
         if (!GetComponent<Rigidbody>()) gameObject.AddComponent<Rigidbody>().mass = mass;
+    }
+
+    private Vector2 getSize()
+    {
+        //one of the cubes must be at the top of the hierarchy inside the Riser object
+        float w = transform.localScale.x * transform.GetChild(0).localScale.x;
+        float h = transform.localScale.z * transform.GetChild(0).localScale.z;
+        return new Vector2(w, h);
     }
 }
