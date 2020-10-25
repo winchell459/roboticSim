@@ -16,6 +16,8 @@ public class TheRobotController : MonoBehaviour
     public float LiftDistance = 1;
     private float liftDefaultHeight, liftSpacing;
 
+    private bool clawActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +43,20 @@ public class TheRobotController : MonoBehaviour
         float moving = Input.GetAxis("Vertical");
         float turning = Input.GetAxis("Horizontal");
 
-        
+        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift);
+        bool clawEngage = Input.GetKeyDown(KeyCode.Space);
 
+        //if both claw buttons are pressed, have no change to clawActive
+        if(clawEngage != clawRelease)
+        {
+            if (clawEngage) clawActive = true;
+            else clawActive = false;
+
+            UpperForklift.ClawActive = clawActive;
+            LowerForklift.ClawActive = clawActive;
+            Debug.Log("clawActive: " + (clawActive ? "engaged": "disengaged"));
+        }
+        
 
         turning += 1;
         turning /= 2;

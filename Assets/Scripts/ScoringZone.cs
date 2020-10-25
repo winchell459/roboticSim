@@ -58,7 +58,7 @@ public class ScoringZone : MonoBehaviour
         float riserRadius = Mathf.Sqrt(Mathf.Pow(riser.Size.x / 2, 2) + Mathf.Pow(riser.Size.y / 2, 2));
         float zoneRadius = buffer + size.x / 2;
         float distance = Mathf.Sqrt(Mathf.Pow(riser.transform.position.x - transform.position.x, 2) + Mathf.Pow(riser.transform.position.z - transform.position.z, 2));
-        Debug.Log(riserRadius + " + " + distance + " <= " + zoneRadius);
+        if((riserRadius + distance) * 0.9f < zoneRadius) Debug.Log(riser.name + ": " + riserRadius + " + " + distance + " <= " + zoneRadius);
 
         if (riserRadius + distance <= zoneRadius) return true;
         else return false;
