@@ -14,26 +14,46 @@ public class BoardController : MonoBehaviour
     public Text ScoreText, TimeText;
     public ScoringHandler SH;
 
+    public float CountdownTime = 5;
+    private float countdownStartTime;
     public float MatchTime = 60;
     private float matchStartTime;
     private bool matchStarted = false;
     private bool matchEnded = false;
 
+    public Text CountdownText;
+
     // Start is called before the first frame update
     void Start()
     {
         setupBoard();
-        startMatch();
+        startCountdown();
+        //startMatch();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (matchStarted && !matchEnded) handleMatch();
+        else if(CountdownTime + countdownStartTime > Time.time)
+        {
+            CountdownText.text = ((int)(CountdownTime - (Time.time - countdownStartTime))).ToString();
+        }
+        else
+        {
+            FindObjectOfType<TheRobotController>().MatchStarted();
+            startMatch();
+        }
+    }
+
+    private void startCountdown()
+    {
+        countdownStartTime = Time.time;
     }
 
     private void startMatch()
     {
+        CountdownText.transform.parent.gameObject.SetActive(false);
         matchStartTime = Time.fixedTime;
         matchStarted = true;
     }
@@ -83,5 +103,9 @@ public class BoardController : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void MainMenuReturn()
+    {
+        SceneManager.LoadScene(0);
     }
 }

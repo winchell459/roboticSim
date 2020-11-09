@@ -18,6 +18,8 @@ public class TheRobotController : MonoBehaviour
 
     private bool clawActive = false;
 
+    bool matchStarted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,30 +35,26 @@ public class TheRobotController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (matchStarted)
+        {
+            handleLift();
+            handleClaw();
+            handleMovement();
+        }
+        
+
+    }
+    public void MatchStarted()
+    {
+        matchStarted = true;
+    }
+    void handleMovement()
+    {
         //Debug.Log(Input.GetAxis("Left") + "  " + Input.GetAxis("Right"));
         //float moving = Input.GetAxis("Left");
         //float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
-
-        handleLift();
-
-
         float moving = Input.GetAxis("Vertical");
         float turning = Input.GetAxis("Horizontal");
-
-        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift);
-        bool clawEngage = Input.GetKeyDown(KeyCode.Space);
-
-        //if both claw buttons are pressed, have no change to clawActive
-        if(clawEngage != clawRelease)
-        {
-            if (clawEngage) clawActive = true;
-            else clawActive = false;
-
-            UpperForklift.ClawActive = clawActive;
-            LowerForklift.ClawActive = clawActive;
-            Debug.Log("clawActive: " + (clawActive ? "engaged": "disengaged"));
-        }
-        
 
         turning += 1;
         turning /= 2;
@@ -69,11 +67,23 @@ public class TheRobotController : MonoBehaviour
 
         rb.velocity = velocity * transform.forward;
         transform.Rotate(rotation * transform.up * Torque);
+    }
 
-        
-        //Debug.Log(rb.velocity);
+    void handleClaw()
+    {
+        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift);
+        bool clawEngage = Input.GetKeyDown(KeyCode.Space);
 
-        //pos = transform.position;
+        //if both claw buttons are pressed, have no change to clawActive
+        if (clawEngage != clawRelease)
+        {
+            if (clawEngage) clawActive = true;
+            else clawActive = false;
+
+            UpperForklift.ClawActive = clawActive;
+            LowerForklift.ClawActive = clawActive;
+            Debug.Log("clawActive: " + (clawActive ? "engaged" : "disengaged"));
+        }
     }
 
     private void handleLift()
