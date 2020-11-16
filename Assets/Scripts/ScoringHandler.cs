@@ -62,6 +62,8 @@ public class ScoringHandler : MonoBehaviour
         Card.SetNumOfRiser(numOfRisers);
         Card.SetNumOfRiserStacks(numOfRiserStacks);
 
+        HighScoreHandler.SetHighScore(score);
+        FindObjectOfType<HighScoreHandler>().DisplayHighScore();
         return score;
     }
 

@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162144146abd4174a8b933887bab2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isBaseMaterial: {fileID: 2100000, guid: 75a250983fab09847b9b3847d9f7a55b, type: 2}
   RiserColor: 0
 --- !u!1 &182732471366860165
 GameObject:

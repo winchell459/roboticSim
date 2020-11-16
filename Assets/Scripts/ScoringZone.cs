@@ -117,4 +117,22 @@ public class ScoringZone : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform.parent && other.transform.parent.GetComponent<Riser>())
+        {
+            if(checkRiserInBounds(other.transform.parent.GetComponent<Riser>(), 0))
+                other.transform.parent.GetComponent<Riser>().SetIsInScoringZone(true);
+            else
+                other.transform.parent.GetComponent<Riser>().SetIsInScoringZone(false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.parent && other.transform.parent.GetComponent<Riser>())
+        {
+            other.transform.parent.GetComponent<Riser>().SetIsInScoringZone(false);
+        }
+    }
 }

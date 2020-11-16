@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7e52b997288f84e67a19fa20b7c58ca1, type: 2}
     - target: {fileID: 182732471200933240, guid: ba6505fcc28f164409a5b93a18a19e74, type: 3}
       propertyPath: m_Name
-      value: Riser Teal
+      value: Riser Teal Variant
       objectReference: {fileID: 0}
     - target: {fileID: 182732471200933242, guid: ba6505fcc28f164409a5b93a18a19e74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: RiserColor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 182732471200933245, guid: ba6505fcc28f164409a5b93a18a19e74, type: 3}
+      propertyPath: m_isBaseMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: fa9b738366459ce42bc1bfccb817498a, type: 2}
     - target: {fileID: 182732471366860166, guid: ba6505fcc28f164409a5b93a18a19e74, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

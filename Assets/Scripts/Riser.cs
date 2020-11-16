@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Riser : MonoBehaviour
 {
+    public Material m_isBaseMaterial;
+    private Material m_default;
+
     private float mass = 1;
     public Vector2 Size { get { return getSize(); } }
     public RiserColors RiserColor;
@@ -17,6 +20,7 @@ public class Riser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_default = transform.GetChild(0).GetComponent<Renderer>().material;
         if (GetComponent<Rigidbody>() != null) mass = GetComponent<Rigidbody>().mass;
     }
 
@@ -39,4 +43,19 @@ public class Riser : MonoBehaviour
         float h = transform.localScale.z * transform.GetChild(0).localScale.z;
         return new Vector2(w, h);
     }
+
+    public void SetIsInScoringZone(bool isInScoringZone)
+    {
+        if (isInScoringZone)
+        {
+            foreach(Renderer child in GetComponentsInChildren<Renderer>())
+                child.material = m_isBaseMaterial;
+        }
+        else
+        {
+            foreach (Renderer child in GetComponentsInChildren<Renderer>())
+                child.material = m_default;
+        }
+    }
+
 }
