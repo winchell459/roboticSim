@@ -36,7 +36,7 @@ public class Forklift : MonoBehaviour
             //Debug.Log(transform.name + " hit " + riser.name);
 
             Vector3 displacement = riser.position - transform.position;
-            if (!ClawActive && Vector3.Dot(displacement, rb.velocity) < 0) //less than zero means release the riser
+            if (!ClawActive && Vector3.Dot(displacement, rb.velocity) < -0.1f) //less than zero means release the riser
             {
                 riser.GetComponent<Riser>().Drop();
             }
