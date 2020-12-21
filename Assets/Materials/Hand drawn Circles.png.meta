@@ -1,0 +1,586 @@
+fileFormatVersion: 2
+guid: 263ca1585dc9a5e45be8f567183f1eb6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7867109252686234981
+    second: Hand drawn Circles_0
+  - first:
+      213: -8187824912136784170
+    second: Hand drawn Circles_1
+  - first:
+      213: -3596488868583875435
+    second: Hand drawn Circles_2
+  - first:
+      213: -865984062731615642
+    second: Hand drawn Circles_3
+  - first:
+      213: -6732768202462482517
+    second: Hand drawn Circles_4
+  - first:
+      213: -3957228493673213810
+    second: Hand drawn Circles_5
+  - first:
+      213: -7573152633818466267
+    second: Hand drawn Circles_6
+  - first:
+      213: 3565977303928259461
+    second: Hand drawn Circles_7
+  - first:
+      213: 3004501985669076760
+    second: Hand drawn Circles_8
+  - first:
+      213: -8343204016655159656
+    second: Hand drawn Circles_9
+  - first:
+      213: -8097036237264994
+    second: Hand drawn Circles_10
+  - first:
+      213: -3513297655617795800
+    second: Hand drawn Circles_11
+  - first:
+      213: -2528968393947565830
+    second: Hand drawn Circles_12
+  - first:
+      213: 6132420099063466416
+    second: Hand drawn Circles_13
+  - first:
+      213: 81337069003350946
+    second: Hand drawn Circles_14
+  - first:
+      213: 553136419683909067
+    second: Hand drawn Circles_15
+  - first:
+      213: 7043513385598340839
+    second: Hand drawn Circles_16
+  - first:
+      213: -6939254121034634471
+    second: Hand drawn Circles_17
+  - first:
+      213: -7130996919171336445
+    second: Hand drawn Circles_18
+  - first:
+      213: -3788547518856192750
+    second: Hand drawn Circles_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hand drawn Circles_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 844
+        width: 138
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ab27001d962d290800000000000000
+      internalID: -7867109252686234981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 858
+        width: 97
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d63ef49f900f5e80800000000000000
+      internalID: -8187824912136784170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_2
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 840
+        width: 138
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c5965dd64b61ec0800000000000000
+      internalID: -3596488868583875435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_3
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 841
+        width: 124
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6628bb745186bf3f0800000000000000
+      internalID: -865984062731615642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_4
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 629
+        width: 149
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafad29ddf66092a0800000000000000
+      internalID: -6732768202462482517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 608
+        width: 151
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80dd8bb6a91519c0800000000000000
+      internalID: -3957228493673213810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_6
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 613
+        width: 155
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 528bf67cdc1c6e690800000000000000
+      internalID: -7573152633818466267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_7
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 634
+        width: 120
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583cfbde675ec7130800000000000000
+      internalID: 3565977303928259461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 422
+        width: 120
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817d2ce23a222b920800000000000000
+      internalID: 3004501985669076760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_9
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 402
+        width: 133
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e28aaa62cf63c80800000000000000
+      internalID: -8343204016655159656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_10
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 431
+        width: 138
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e972857d9cb33eff0800000000000000
+      internalID: -8097036237264994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_11
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 395
+        width: 132
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82940be75624e3fc0800000000000000
+      internalID: -3513297655617795800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_12
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 193
+        width: 137
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0b09e05ac47ecd0800000000000000
+      internalID: -2528968393947565830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_13
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 204
+        width: 178
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9c422d69bba1550800000000000000
+      internalID: 6132420099063466416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_14
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 193
+        width: 163
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3240122a7f02100800000000000000
+      internalID: 81337069003350946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_15
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 187
+        width: 130
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd379f94a22da700800000000000000
+      internalID: 553136419683909067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_16
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 89
+        width: 112
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee4c472b169fb160800000000000000
+      internalID: 7043513385598340839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_17
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 29
+        width: 154
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ba0958421d2bf90800000000000000
+      internalID: -6939254121034634471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_18
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 30
+        width: 157
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307336a651c990d90800000000000000
+      internalID: -7130996919171336445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand drawn Circles_19
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 31
+        width: 150
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d93ebaa106c6bc0800000000000000
+      internalID: -3788547518856192750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 86345cd7cd67b7d4b9eb8cc1d6462e7b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

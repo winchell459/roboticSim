@@ -2,19 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TouchControlsKit;
 
 public class TheRobotController : MonoBehaviour
 {
     public float Speed = 3f;
     public float Torque = 5.0f; //float - > real numbers
     private Rigidbody rb;
-
+    private bool clawActive = false;
     private List<Riser> risers = new List<Riser>();
 
     public Forklift UpperForklift, LowerForklift, BottomForklift;
     public float LiftSpeed = 1;
     public float LiftDistance = 1;
     private float liftDefaultHeight, liftSpacing;
+
+    bool matchStarted;
+
+    public bool TouchControls;
 
     // Start is called before the first frame update
     void Start()
@@ -31,19 +36,33 @@ public class TheRobotController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (matchStarted)
+        {
+            handleLift();
+            handleClaw();
+            handleMovement();
+        }
+
+    }
+    public void MatchStarted()
+    {
+        matchStarted = true;
+    }
+    void handleMovement()
+    {
         //Debug.Log(Input.GetAxis("Left") + "  " + Input.GetAxis("Right"));
         //float moving = Input.GetAxis("Left");
         //float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
-
-        handleLift();
-
-
         float moving = Input.GetAxis("Vertical");
         float turning = Input.GetAxis("Horizontal");
 
-        
-
-
+        if (TouchControls)
+        {
+            Vector2 move = TCKInput.GetAxis("Joystick"); // NEW func since ver 1.5.5
+            moving = move.y;
+            turning = move.x;
+        }
         turning += 1;
         turning /= 2;
 
@@ -54,17 +73,35 @@ public class TheRobotController : MonoBehaviour
         float velocity = moving * Speed;
 
         rb.velocity = velocity * transform.forward;
-        transform.Rotate(rotation * transform.up * Torque);
+        transform.Rotate(rotation * transform.up * Torque * Time.deltaTime);
+        Debug.Log(rotation);
+    }
 
-        
-        //Debug.Log(rb.velocity);
+    void handleClaw()
+    {
+        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift) || TCKInput.GetAction("ClawDisengage", EActionEvent.Down);
+        bool clawEngage = Input.GetKeyDown(KeyCode.Space) || TCKInput.GetAction("ClawEngage", EActionEvent.Down);
 
-        //pos = transform.position;
+        if (clawEngage != clawRelease)
+        {
+            if (clawEngage) clawActive = true;
+            else clawActive = false;
+
+            UpperForklift.ClawActive = clawActive;
+            LowerForklift.ClawActive = clawActive;
+            Debug.Log("clawActive: " + (clawActive ? "engaged" : " disengaged"));
+        }
     }
 
     private void handleLift()
     {
         float lift = Input.GetAxis("Right");
+        if (TouchControls)
+        {
+            lift = 0;
+            lift += TCKInput.GetAction("ElevatorUP", EActionEvent.Press) ? 1 : 0;
+            lift += TCKInput.GetAction("ElevatorDown", EActionEvent.Press) ? -1 : 0;
+        }
         if (BottomForklift.transform.GetComponentInChildren<Riser>()) lift = Mathf.Clamp(lift, 0, 1); //if bottom forklift has a rise, do not move down
         float liftPos = lift * Time.deltaTime * LiftSpeed + LowerForklift.transform.localPosition.y; //lift displacement plus Lowerlift local y position
         liftPos = Mathf.Clamp(liftPos, liftDefaultHeight, liftDefaultHeight + LiftDistance); //clamp lower lift between default height and max height

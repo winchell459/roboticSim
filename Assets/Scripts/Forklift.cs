@@ -8,6 +8,8 @@ public class Forklift : MonoBehaviour
 
     public LayerMask Mask;
     public float RayDistance = 1f;
+    public bool ClawActive;
+    public bool LiftEngaged;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +30,13 @@ public class Forklift : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * RayDistance, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, RayDistance, Mask))
+        if (!ClawActive && Physics.Raycast(ray, out hit, RayDistance, Mask))
         {
             Transform riser = getParent(hit.collider.transform);
             //Debug.Log(transform.name + " hit " + riser.name);
 
             Vector3 displacement = riser.position - transform.position;
-            if (Vector3.Dot(displacement, rb.velocity) < 0) //less than zero means release the riser
+            if (!ClawActive && Vector3.Dot(displacement, rb.velocity) < -0.1f) //less than zero means release the riser
             {
                 riser.GetComponent<Riser>().Drop();
             }
