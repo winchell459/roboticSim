@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TouchControlsKit;
 
 public class TheRobotController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class TheRobotController : MonoBehaviour
     private bool clawActive = false;
 
     bool matchStarted;
+
+    public bool TouchControls;
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +53,16 @@ public class TheRobotController : MonoBehaviour
     }
     void handleMovement()
     {
-        //Debug.Log(Input.GetAxis("Left") + "  " + Input.GetAxis("Right"));
-        //float moving = Input.GetAxis("Left");
-        //float turning = Input.GetAxis("Right"); // right = -1 full power on right wheels  -1 = 100% right 0 = 50% right and 1 = 0% right
         float moving = Input.GetAxis("Vertical");
         float turning = Input.GetAxis("Horizontal");
+
+        if (TouchControls)
+        {
+            Vector2 move = TCKInput.GetAxis("Joystick");
+            moving = move.y;
+            turning = move.x;
+        }
+        
 
         turning += 1;
         turning /= 2;
@@ -66,13 +74,17 @@ public class TheRobotController : MonoBehaviour
         float velocity = moving * Speed;
 
         rb.velocity = velocity * transform.forward;
-        transform.Rotate(rotation * transform.up * Torque);
+
+        transform.Rotate(rotation * transform.up * Torque * Time.deltaTime);
+        //Debug.Log(rotation * transform.up * Torque);
+        //rb.angularVelocity = rotation * transform.up * Torque;
+        //Debug.Log(rb.angularVelocity + " " + rotation * transform.up * Torque);
     }
 
     void handleClaw()
     {
-        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift);
-        bool clawEngage = Input.GetKeyDown(KeyCode.Space);
+        bool clawRelease = Input.GetKeyDown(KeyCode.LeftShift) || TCKInput.GetAction("clawDisengageBtn", EActionEvent.Down);
+        bool clawEngage = Input.GetKeyDown(KeyCode.Space) || TCKInput.GetAction("clawEngageBtn", EActionEvent.Down);
 
         //if both claw buttons are pressed, have no change to clawActive
         if (clawEngage != clawRelease)
@@ -89,6 +101,13 @@ public class TheRobotController : MonoBehaviour
     private void handleLift()
     {
         float lift = Input.GetAxis("Right");
+        if (TouchControls)
+        {
+            lift = 0;
+            lift += TCKInput.GetAction("liftUpBtn", EActionEvent.Press) ? 1 : 0;
+            lift += TCKInput.GetAction("liftDownBtn", EActionEvent.Press) ? -1 : 0;
+        }
+
         if (BottomForklift.transform.GetComponentInChildren<Riser>()) lift = Mathf.Clamp(lift, 0, 1); //if bottom forklift has a rise, do not move down
         float liftPos = lift * Time.deltaTime * LiftSpeed + LowerForklift.transform.localPosition.y; //lift displacement plus Lowerlift local y position
         liftPos = Mathf.Clamp(liftPos, liftDefaultHeight, liftDefaultHeight + LiftDistance); //clamp lower lift between default height and max height
