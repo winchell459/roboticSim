@@ -25,11 +25,18 @@ public class BoardController : MonoBehaviour
 
     public Text CountdownText;
 
+    public static float SpeedScale = 1;
+    public static float RotationScale = 1;
+    public Slider SpeedSlider;
+    public Slider RotationSlider;
+
+
     // Start is called before the first frame update
     void Start()
     {
         setupBoard();
         startCountDown();
+        setControlSliders();
     }
 
     // Update is called once per frame
@@ -107,5 +114,26 @@ public class BoardController : MonoBehaviour
     public void MainMenuReturn()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SpeedScaleSlider(float value)
+    {
+        SpeedScale = value;
+        PlayerPrefs.SetFloat("SpeedScale", value);
+    }
+
+    public void RotationScaleSlider(float value)
+    {
+        RotationScale = value;
+        PlayerPrefs.SetFloat("RotationScale", value);
+    }
+
+    private void setControlSliders()
+    {
+        SpeedScale = PlayerPrefs.GetFloat("SpeedScale", SpeedScale);
+        SpeedSlider.value = SpeedScale;
+
+        RotationScale = PlayerPrefs.GetFloat("RotationScale", RotationScale);
+        RotationSlider.value = RotationScale;
     }
 }
