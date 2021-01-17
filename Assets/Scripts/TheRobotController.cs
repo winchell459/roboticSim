@@ -72,8 +72,8 @@ public class TheRobotController : MonoBehaviour
         float rotation = left - right;
         float velocity = moving * Speed;
 
-        rb.velocity = velocity * transform.forward;
-        transform.Rotate(rotation * transform.up * Torque * Time.deltaTime);
+        rb.velocity = velocity * transform.forward * BoardController.SpeedScale;
+        transform.Rotate(rotation * transform.up * Torque * Time.deltaTime * BoardController.RotationScale);
         Debug.Log(rotation);
     }
 
