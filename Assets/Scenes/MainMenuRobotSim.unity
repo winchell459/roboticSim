@@ -584,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &463729892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -868,8 +868,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "-Use WASD to move robot\r\n-Use UP and Down Arrows to lift up Risers\n-Claw
-    buttons\r\n-Left shift to release \r\n-Space to grab\r\n\n"
+  m_Text: "-Touch and drag in the bottom left corner of screen to move robot\r\n\n-Use
+    UP and Down Buttons to lift up Risers\n\n-Claw buttons\r\n\t-Click \"Disengage\"
+    to release \r\n\t-Click \"Engage\" to grab\r\n\n"
 --- !u!222 &574917085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1775,7 +1776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1766514072
 RectTransform:
   m_ObjectHideFlags: 0
